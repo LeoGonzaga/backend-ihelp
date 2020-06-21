@@ -21,7 +21,7 @@ module.exports = {
             await Post.findByIdAndDelete(postId);
             return res.json({message: "Post Deletado"});
         }else{
-            return res.json({message: "Post nao encontrado"});
+            return res.status(400).json({error: 'Post não encontrado'});
         }
     }
 }

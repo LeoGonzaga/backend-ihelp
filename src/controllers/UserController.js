@@ -7,13 +7,13 @@ module.exports = {
         const { username, email, password } = req.body;
 
         if(!username || !email || !password){
-            return res.json({ message: 'Campo Vazio' });
+            return res.status(400).json({error: 'Campo não preenchido'});
         }
 
         let user = await User.findOne({ email });
 
         if(user){
-            return res.json({ message: 'Email já cadastrado' });
+            return res.status(400).json({error: 'Email já cadastrado'});
         }
  
         user = await User.create({ username, email, password });
@@ -26,7 +26,7 @@ module.exports = {
         let user = await User.findOne({ email });
 
         if(!user){
-            return res.json({ message: 'Usuário não encontrado' });
+            return res.status(400).json({error: 'Usuário não encontrado'});
         }else{  
             const pass = crypto.randomBytes(10).toString('hex');
             user.password = pass;
@@ -36,7 +36,7 @@ module.exports = {
                 service: 'Gmail',
                 auth: {
                     user: 'ihelpunifei@gmail.com',
-                    pass: ''
+                    pass: 'Bl00dh3lp'
                 }
             });
             const mailOptions = {
@@ -56,7 +56,7 @@ module.exports = {
     async viewUser(req, res) {
         let user = await User.findById(req.userId);
         if(!user){
-            return res.json({message: 'Usuario não encontrado'})
+            return res.status(401).json({error: 'Usuário não encontrado'});
         }else{
             return res.json(user);
         }
@@ -65,7 +65,7 @@ module.exports = {
     async updateUser(req, res) {
         let user = await User.findById(req.userId);
         if(!user){
-            return res.json({message: 'Usuario não encontrado'})
+            return res.status(401).json({error: 'Usuário não encontrado'});
         }else{
             const {username, bloodtype, password, birthday, phone, height, weight} = req.body;
             if(username) user.username = username;

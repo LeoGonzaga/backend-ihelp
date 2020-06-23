@@ -1,12 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
+// const routes = express.Router();
 const bp = require("body-parser");
 const dotenv = require("dotenv");
-const routes = require("./routes");
 const cors = require("cors");
+ const routes = require("./routes");
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3090;
 dotenv.config();
 mongoose.connect(
   "mongodb+srv://leogonzaga:bloodhelp@omnistack-ekd7k.mongodb.net/test?retryWrites=true&w=majority",

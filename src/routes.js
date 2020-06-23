@@ -1,14 +1,12 @@
 const express = require("express");
 const routers = express.Router();
-
-
 const SessionController = require("./controllers/SessionController");
 const UserController = require("./controllers/UserController");
 const PostController = require("./controllers/PostController");
 const Home = require("../dist/index");
 const auth = require("./middlewares/auth");
 
-routers.get("/", Home.home);
+// routers.get("/", Home.home);
 routers.post("/createAccount", UserController.createUser);
 routers.post("/login", SessionController.login);
 routers.post("/reset", UserController.recoveryPassword);

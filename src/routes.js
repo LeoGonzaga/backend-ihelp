@@ -1,5 +1,4 @@
 const { Router } = require("express");
-const routers = new Router();
 
 
 const SessionController = require("./controllers/SessionController");
@@ -7,6 +6,8 @@ const UserController = require("./controllers/UserController");
 const PostController = require("./controllers/PostController");
 const Home = require("../dist/index");
 const auth = require("./middlewares/auth");
+
+const routers = Router();
 
 routers.get("/", Home.home);
 routers.post("/createAccount", UserController.createUser);

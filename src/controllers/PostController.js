@@ -10,7 +10,7 @@ module.exports = {
  
     async viewPosts(req, res){
         const filter = [];
-        let post = await Post.find(filter);
+        let post = await Post.find();
         return res.json(post);
     },
 

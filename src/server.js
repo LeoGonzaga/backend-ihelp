@@ -1,9 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const routes = express.Router();
 const bp = require("body-parser");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const routes = require("./routes");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -19,6 +19,10 @@ app.use(cors());
 app.use(bp.json());
 app.use(express.json());
 app.use(routes);
+
+app.get("/", function (req, res) {
+  res.send("hello world");
+});
 
 app.listen(port, () => {
   console.log(`A NodeJS API is listining on port: ${port}`);

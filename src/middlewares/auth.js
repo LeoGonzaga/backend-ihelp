@@ -5,6 +5,7 @@ const authConfig = require("../config/authConfig");
 module.exports = {
     async auth (req, res, next){
         const token = req.body.token;
+        const feedToken = req.params.token;
         if(!token){
              return res.status(401).json({error: 'Token não recebido'});
         }

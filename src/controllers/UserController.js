@@ -75,7 +75,7 @@ module.exports = {
             if(phone) user.phone = phone;
             if(height) user.height = height;
             if(weight) user.weight = weight;
-            user.update();
+            user.save();
             return res.json(user);
         }
     }

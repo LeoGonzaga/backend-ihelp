@@ -11,7 +11,7 @@ routers.post("/createAccount", UserController.createUser);
 routers.post("/login", SessionController.login);
 routers.post("/reset", UserController.recoveryPassword);
 routers.get("/user/:userId", UserController.viewUser);
-routers.put("/user/update/:userId", auth.auth, UserController.updateUser);
+routers.put("/user/update/:userId", UserController.updateUser);
 routers.get("/feed", PostController.viewPosts);
 routers.post("/feed/create", auth.auth, PostController.createPost);
 routers.delete("/feed/delete", auth.auth, PostController.deletePost);

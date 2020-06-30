@@ -57,7 +57,7 @@ module.exports = {
   },
 
   async viewUser(req, res) {
-    let user = await User.findById(req.params.userId);
+    let user = await User.findById(req.userId);
     if (!user) {
       return res.status(401).json({ error: "Usuário não encontrado" });
     } else {
@@ -66,7 +66,7 @@ module.exports = {
   },
 
   async updateUser(req, res) {
-    let user = await User.findById(req.params.userId);
+    let user = await User.findById(req.userId);
     if (!user) {
       return res.status(401).json({ error: "Usuário não encontrado" });
     } else {
